@@ -1,0 +1,20 @@
+{
+  "name": "Area 51 Breach And Damnation",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "$path": "src/Shared"
+    },
+
+    "ServerScriptService": {
+      "$path": "src/Server"
+    },
+
+    "StarterPlayer": {
+      "StarterPlayerScripts":{
+        "$path": "src/Client"
+      }
+    }
+  }
+}
