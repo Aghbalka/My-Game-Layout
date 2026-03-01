@@ -1,7 +1,10 @@
 local Validators = {}
 
-function Validators:ValidatorCheck(_ValidatorPrefix, _ValidatorList)
-	-- will get the ValidatorPrefix.."Validators" Validator and check if the given ValidatorList follows the validation rules of it , returns true if yes
+function Validators:ValidatorCheck(ValidatorPrefix, RemoteName, Args)
+	local ValidatorsModule =
+		require(game.ReplicatedStorage.Networking.Validators:FindFirstChild(ValidatorPrefix .. "Validators"))
+	local Result = ValidatorsModule[RemoteName](table.unpack(Args))
+	return Result
 end
 
 return Validators

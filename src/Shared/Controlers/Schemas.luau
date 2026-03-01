@@ -1,7 +1,26 @@
 local Schemas = {}
 
-function Schemas:SchemaCheck(_SchemaPrefix, _SchemaList)
-	-- will get the SchemaPrefix.."Schemas" schema and check if the given SchemaList follows the schema rules of it , returns true if yes
+function Schemas:SchemaCheck(SchemaPrefix, RemoteName, Args)
+	local SchemasModule = require(game.ReplicatedStorage.Networking.Schemas:FindFirstChild(SchemaPrefix .. "Schemas"))
+
+	local Schema = SchemasModule[RemoteName]
+
+	if not Schema then
+		warn("No schema found for:", RemoteName)
+		return false
+	end
+
+	if #Args ~= #Schema then
+		return false
+	end
+
+	for i, expectedType in ipairs(Schema) do
+		if typeof(Args[i]) ~= expectedType then
+			return false
+		end
+	end
+
+	return true
 end
 
 return Schemas

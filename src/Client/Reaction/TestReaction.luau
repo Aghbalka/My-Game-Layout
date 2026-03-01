@@ -1,13 +1,11 @@
 local TestReaction = {}
 
-TestReaction.Started = false -- so we avoid running the initialize function twice or more
-
-function TestReaction:Start() -- Start function that plays when started
+function TestReaction:Start() -- This is the start function that plays for the local player on start
 	print("Client Started!")
 end
 
-function TestReaction:Update(Msg) -- Update Function that exists in every Reaction Module, gets run by Handlers, Basically Services but client sided
-	print(Msg)
+function TestReaction.React(Table)
+	print(Table)
 end
 
 return TestReaction
